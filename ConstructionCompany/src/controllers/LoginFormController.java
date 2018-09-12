@@ -50,7 +50,7 @@ public class LoginFormController implements Initializable {
       String username = usernameText.getText();
       String password = passwordText.getText();
       
-      username = "Admin"; //TODO Delete this for testing
+      username = "admin"; //TODO Delete this for testing
       password = "admin";
       
       if(UserDAO.login(username, password))
