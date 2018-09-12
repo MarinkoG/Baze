@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainFormController">
+   <children>
+      <Button fx:id="employeesButton" layoutX="14.0" layoutY="27.0" mnemonicParsing="false" onAction="#showEmployees" text="Employees" />
+      <Button fx:id="projectsButton" layoutX="121.0" layoutY="27.0" mnemonicParsing="false" onAction="#showProjects" prefHeight="25.0" prefWidth="73.0" text="Projects" />
+      <Button fx:id="usersButton" layoutX="230.0" layoutY="27.0" mnemonicParsing="false" onAction="#showUsers" prefHeight="25.0" prefWidth="73.0" text="Users" />
+      <Button fx:id="stagesButton" layoutX="337.0" layoutY="27.0" mnemonicParsing="false" onAction="#showStages" text="Stages" />
+   </children>
+</AnchorPane>

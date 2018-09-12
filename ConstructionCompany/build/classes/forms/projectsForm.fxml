@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="594.0" prefWidth="982.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="controllers.ProjectsFormController">
+   <children>
+      <TableView layoutX="-2.0" layoutY="2.0" prefHeight="594.0" prefWidth="803.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="Id" />
+          <TableColumn prefWidth="75.0" text="Name" />
+            <TableColumn prefWidth="75.0" text="Menager" />
+            <TableColumn prefWidth="75.0" text="Client" />
+            <TableColumn prefWidth="75.0" text="Start date" />
+            <TableColumn prefWidth="107.0" text="Completion date" />
+            <TableColumn prefWidth="89.0" text="Location" />
+            <TableColumn prefWidth="93.0" text="Price" />
+            <TableColumn prefWidth="136.0" text="Description" />
+        </columns>
+      </TableView>
+      <Button fx:id="addButton" layoutX="845.0" layoutY="370.0" mnemonicParsing="false" onAction="#addNewProject" prefHeight="25.0" prefWidth="63.0" text="Add" />
+      <Button fx:id="editButton" disable="true" layoutX="845.0" layoutY="423.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="63.0" text="Edit" />
+      <Button fx:id="deleteButton" disable="true" layoutX="845.0" layoutY="477.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="63.0" text="Delete" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="641.0" prefWidth="602.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddNewEmployeeController">
+   <children>
+      <Label layoutX="42.0" layoutY="58.0" minWidth="-Infinity" text="First Name" />
+      <Label layoutX="42.0" layoutY="100.0" text="Last Name" />
+      <Label layoutX="45.0" layoutY="140.0" text="Personal Id" />
+      <TextField fx:id="firstNameText" layoutX="147.0" layoutY="54.0" prefHeight="25.0" prefWidth="240.0" />
+      <TextField fx:id="lastNameText" layoutX="147.0" layoutY="96.0" prefHeight="25.0" prefWidth="240.0" />
+      <TextField fx:id="jmbgText" layoutX="147.0" layoutY="136.0" prefHeight="25.0" prefWidth="240.0" />
+      <Button fx:id="saveButton" layoutX="247.0" layoutY="556.0" mnemonicParsing="false" onAction="#addNewEmployee" prefHeight="31.0" prefWidth="101.0" text="Save" />
+      <Label layoutX="44.0" layoutY="212.0" text="Adress" />
+      <Label layoutX="44.0" layoutY="345.0" text="Profession" />
+      <Label layoutX="44.0" layoutY="386.0" text="Department" />
+      <TextField fx:id="streetText" layoutX="148.0" layoutY="208.0" prefHeight="25.0" prefWidth="113.0" />
+      <TextField fx:id="professionText" layoutX="147.0" layoutY="341.0" prefHeight="25.0" prefWidth="240.0" />
+      <TextField fx:id="phoneNumberText" layoutX="147.0" layoutY="252.0" prefHeight="25.0" prefWidth="240.0" />
+      <Label layoutX="45.0" layoutY="256.0" text="Phone number" />
+      <Label layoutX="42.0" layoutY="433.0" text="Date of Birth" />
+      <DatePicker fx:id="dateOfBirthPicker" layoutX="147.0" layoutY="429.0" prefHeight="25.0" prefWidth="240.0" />
+      <Label layoutX="42.0" layoutY="301.0" text="E-mail" />
+      <TextField fx:id="emailText" layoutX="147.0" layoutY="297.0" prefHeight="25.0" prefWidth="240.0" />
+      <Label layoutX="42.0" layoutY="476.0" text="Project Stage" />
+      <ChoiceBox fx:id="projectChoiceBox" layoutX="145.0" layoutY="472.0" prefHeight="25.0" prefWidth="240.0" />
+      <ChoiceBox layoutX="147.0" layoutY="382.0" prefHeight="25.0" prefWidth="240.0" />
+      <TextField fx:id="numberText" layoutX="265.0" layoutY="208.0" prefHeight="25.0" prefWidth="64.0" />
+      <TextField fx:id="zipCodeText" layoutX="454.0" layoutY="208.0" prefHeight="25.0" prefWidth="64.0" />
+      <TextField fx:id="cityText" layoutX="333.0" layoutY="208.0" prefHeight="25.0" prefWidth="113.0" />
+      <Label layoutX="282.0" layoutY="186.0" text="Num." />
+      <Label layoutX="189.0" layoutY="186.0" text="Street" />
+      <Label layoutX="349.0" layoutY="186.0" text="City" />
+      <Label layoutX="463.0" layoutY="186.0" text="Zip code" />
+   </children>
+</AnchorPane>
