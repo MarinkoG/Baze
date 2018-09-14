@@ -6,26 +6,33 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="716.0" prefWidth="1023.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EmployeeFormController">
+<AnchorPane id="AnchorPane" prefHeight="825.0" prefWidth="1111.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EmployeeFormController">
    <children>
-      <TableView prefHeight="652.0" prefWidth="787.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="141.0" AnchorPane.topAnchor="0.0">
-        <columns>
-          <TableColumn prefWidth="75.0" text="First Name" />
-          <TableColumn prefWidth="75.0" text="Last Name" />
-            <TableColumn prefWidth="75.0" text="Personal Id" />
-            <TableColumn prefWidth="103.0" text="Date of Birth" />
-            <TableColumn prefWidth="98.0" text="Address" />
-            <TableColumn prefWidth="69.0" text="Profession" />
-            <TableColumn prefWidth="96.0" text="Department" />
-            <TableColumn prefWidth="107.0" text="Phone Number" />
-            <TableColumn prefWidth="68.0" text="E-mail" />
-        </columns>
-         <columnResizePolicy>
-            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-         </columnResizePolicy>
-      </TableView>
+      <ScrollPane fitToHeight="true" fitToWidth="true" prefViewportHeight="818.0" prefViewportWidth="1060.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="132.0" AnchorPane.topAnchor="0.0">
+         <content>
+            <TableView fx:id="employeesTable" minHeight="-Infinity" minWidth="-Infinity" prefHeight="823.0" prefWidth="1384.0">
+              <columns>
+                <TableColumn fx:id="firstNameColumn" prefWidth="92.0" text="First Name" />
+                <TableColumn fx:id="lastNameColumn" prefWidth="95.0" text="Last Name" />
+                  <TableColumn fx:id="personalIdColumn" prefWidth="55.0" text="Personal Id" />
+                  <TableColumn fx:id="dateOfBirthColumn" prefWidth="103.0" text="Date of Birth" />
+                  <TableColumn fx:id="addressColumn" prefWidth="98.0" text="Address" />
+                  <TableColumn fx:id="phoneNumberColumn" prefWidth="107.0" text="Phone Number" />
+                  <TableColumn fx:id="emailColumn" prefWidth="68.0" text="E-mail" />
+                  <TableColumn fx:id="professionColumn" prefWidth="68.0" text="Profession" />
+                  <TableColumn fx:id="hourlyRateColumn" prefWidth="68.0" text="Hourly rate" />
+                  <TableColumn fx:id="salaryColumn" prefWidth="68.0" text="Salary" />
+                  <TableColumn fx:id="bankAccountColumn" prefWidth="68.0" text="Bank account" />
+                  <TableColumn fx:id="usernameColumn" prefWidth="68.0" text="Username" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+         </content>
+      </ScrollPane>
       <Button fx:id="addButton" layoutX="840.0" layoutY="496.0" mnemonicParsing="false" onAction="#addEmployee" prefHeight="25.0" prefWidth="51.0" text="Add" AnchorPane.bottomAnchor="130.0" AnchorPane.rightAnchor="37.0" />
-      <Button fx:id="editButton" layoutX="840.0" layoutY="541.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="51.0" text="Edit" AnchorPane.bottomAnchor="85.0" AnchorPane.rightAnchor="37.0" />
-      <Button fx:id="deleteButton" layoutX="840.0" layoutY="586.0" mnemonicParsing="false" text="Delete" AnchorPane.bottomAnchor="40.0" AnchorPane.rightAnchor="37.0" />
+      <Button fx:id="editButton" layoutX="840.0" layoutY="541.0" mnemonicParsing="false" onAction="#editEmployee" prefHeight="25.0" prefWidth="51.0" text="Edit" AnchorPane.bottomAnchor="85.0" AnchorPane.rightAnchor="37.0" />
+      <Button fx:id="deleteButton" layoutX="840.0" layoutY="586.0" mnemonicParsing="false" onAction="#deleteEmployee" text="Delete" AnchorPane.bottomAnchor="40.0" AnchorPane.rightAnchor="37.0" />
    </children>
 </AnchorPane>

@@ -2,6 +2,7 @@ drop schema if exists construction_company;
 create schema construction_company default character set utf8 default collate utf8_unicode_ci;
 use construction_company;
 
+
 CREATE TABLE ADDRESS
 (
 	Address_id            INTEGER AUTO_INCREMENT,
@@ -65,7 +66,6 @@ CREATE TABLE DEPARTMENT
 CREATE TABLE EMPLOYEE
 (
 	Personal_id_Number    VARCHAR(20) NOT NULL,
-	Length_of_service     INTEGER NULL,
 	Salary                INTEGER NULL,
 	Bank_account          VARCHAR(20) NULL,
 	Profession            VARCHAR(20) NULL,
@@ -138,7 +138,7 @@ CREATE TABLE PERSON
 	Personal_id_Number    VARCHAR(20) NOT NULL,
 	First_Name            VARCHAR(20) NULL,
 	Last_Name             VARCHAR(20) NULL,
-	Date_of_Birth         DATE NULL,
+	Date_of_birth         DATE NULL,
 	Address               INTEGER NULL,
 	Phone_number          VARCHAR(20) NULL,
 	E_mail                VARCHAR(50) NULL,
@@ -344,7 +344,6 @@ ALTER TABLE COMMISSIONS
 
 ALTER TABLE EMPLOYEE
 	ADD FOREIGN KEY (Personal_id_Number) REFERENCES PERSON(Personal_id_Number)
-		ON DELETE CASCADE
 ;
 
 
@@ -443,6 +442,7 @@ ALTER TABLE USER_ACCOUNT
 
 ALTER TABLE USER_ACCOUNT
 	ADD FOREIGN KEY LOGS_IN_WITH (Personal_id_Number) REFERENCES EMPLOYEE(Personal_id_Number)
+		ON DELETE CASCADE
 ;
 
 

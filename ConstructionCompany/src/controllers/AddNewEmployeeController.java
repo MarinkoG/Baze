@@ -5,6 +5,8 @@
  */
 package controllers;
 
+import dto.EmployeeDTO;
+import dto.UserDTO;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -55,11 +57,20 @@ public class AddNewEmployeeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void addNewEmployee(ActionEvent event) {
         System.out.println("Mare addNewEmployee()");
     }
-    
+
+    public void setEdit(EmployeeDTO employee) {
+     /*   employeeBox.getItems().clear();
+        employeeBox.getItems().add(user.getPersonalIdNumber() + ", " + user.getFirstName() + ", " + user.getLastName());
+        employeeBox.setValue(employeeBox.getItems().get(0));
+        employeeBox.setDisable(true);
+        usernameText.setText(user.getUsername());
+        privilegeBox.setValue(user.getPrivilege());*/
+    }
+
 }
