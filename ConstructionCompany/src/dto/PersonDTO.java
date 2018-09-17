@@ -26,7 +26,12 @@ public class PersonDTO {
         this.lastName = lastName;
         this.personalIdNumber = personalId;
         this.dateOfBirth = dateOfBirth;
-        this.address = address;
+        if (address.contains("null")) {
+            this.address = "";
+        }else{
+            this.address = address;
+        }
+        
         this.phoneNumber = phoneNumber;
         this.email = email;
     }

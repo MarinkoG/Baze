@@ -49,3 +49,7 @@ end //
 delimiter ;
 
 SELECT Hourly_rate, Salary, Username, Password, Privilege, First_Name, Last_Name, person.Personal_id_Number, Date_of_birth, Phone_number, E_mail, City, Street, Zip_code, House_number  FROM employee left join person on employee.Personal_id_Number=person.Personal_id_Number left join user_account on employee.Personal_id_Number=user_account.Personal_id_Number left join address on person.Address=address.Address_id;
+
+
+INSERT INTO `tools` (`Name`, `Description`, `Amount`) VALUES ('Hmare', 'Basic small hammer', '15');
+select LAST_INSERT_ID();

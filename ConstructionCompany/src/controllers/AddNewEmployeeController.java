@@ -16,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 /**
@@ -51,6 +52,8 @@ public class AddNewEmployeeController implements Initializable {
     private TextField salaryText;
     @FXML
     private TextField personalIdText;
+    @FXML
+    private Label warningLabel;
 
     /**
      * Initializes the controller class.
@@ -62,10 +65,15 @@ public class AddNewEmployeeController implements Initializable {
 
     @FXML
     private void addNewEmployee(ActionEvent event) {
-        String address = cityText.getText() + ", " + streetText.getText() + ", " + zipCodeText.getText()  + ", " + numberText.getText();
-         EmployeeDTO employee = new EmployeeDTO(hourlyRateText.getText(), salaryText.getText(), "", firstNameText.getText(), lastNameText.getText(), personalIdText.getText(), dateOfBirthPicker.getAccessibleText(), phoneNumberText.getText(), emailText.getText(), address);
-        EmployeeDAO.saveEmployee(employee);
-         /*if (employeeBox.isDisable()) {
+        String address = cityText.getText() + ", " + streetText.getText() + ", " + zipCodeText.getText() + ", " + numberText.getText();
+        EmployeeDTO employee = new EmployeeDTO(hourlyRateText.getText(), salaryText.getText(), "", firstNameText.getText(), lastNameText.getText(), personalIdText.getText(), dateOfBirthPicker.getAccessibleText(), phoneNumberText.getText(), emailText.getText(), address);
+
+        if (EmployeeDAO.saveEmployee(employee)) {
+            warningLabel.setText("Succesufully saved user");
+        } else {
+            warningLabel.setText("Error while saving user");
+        }
+        /*if (employeeBox.isDisable()) {
             if (UserDAO.updateUser(user)) {
                 warningLabel.setText("Succesufully updated user");
             } else {
@@ -81,7 +89,7 @@ public class AddNewEmployeeController implements Initializable {
     }
 
     public void setEdit(EmployeeDTO employee) {
-     /*   employeeBox.getItems().clear();
+        /*   employeeBox.getItems().clear();
         employeeBox.getItems().add(user.getPersonalIdNumber() + ", " + user.getFirstName() + ", " + user.getLastName());
         employeeBox.setValue(employeeBox.getItems().get(0));
         employeeBox.setDisable(true);

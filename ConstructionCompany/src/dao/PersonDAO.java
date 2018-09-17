@@ -33,7 +33,7 @@ public class PersonDAO {
             preparedStatement.setString(4, person.getDateOfBirth());
             preparedStatement.setString(5, person.getPhoneNumber());
             preparedStatement.setString(6, person.getEmail());
-            preparedStatement.executeUpdate();
+            System.out.println("RETURN----" + preparedStatement.executeUpdate());;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;

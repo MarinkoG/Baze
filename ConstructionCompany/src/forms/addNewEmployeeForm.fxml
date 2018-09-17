@@ -34,5 +34,6 @@
       <Label layoutX="42.0" layoutY="390.0" text="Hourly rate" />
       <TextField fx:id="salaryText" layoutX="147.0" layoutY="430.0" prefHeight="25.0" prefWidth="240.0" />
       <Label layoutX="42.0" layoutY="434.0" text="Salary" />
+      <Label fx:id="warningLabel" layoutX="148.0" layoutY="462.0" prefHeight="17.0" prefWidth="240.0" />
    </children>
 </AnchorPane>
