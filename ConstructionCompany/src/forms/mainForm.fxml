@@ -9,8 +9,8 @@
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainFormController">
    <children>
       <Button fx:id="employeesButton" layoutX="14.0" layoutY="27.0" mnemonicParsing="false" onAction="#showEmployees" text="Employees" />
-      <Button fx:id="projectsButton" layoutX="121.0" layoutY="27.0" mnemonicParsing="false" onAction="#showProjects" prefHeight="25.0" prefWidth="73.0" text="Projects" />
-      <Button fx:id="usersButton" layoutX="230.0" layoutY="27.0" mnemonicParsing="false" onAction="#showUsers" prefHeight="25.0" prefWidth="73.0" text="Users" />
-      <Button fx:id="stagesButton" layoutX="337.0" layoutY="27.0" mnemonicParsing="false" onAction="#showStages" text="Stages" />
+      <Button fx:id="projectsButton" disable="true" layoutX="210.0" layoutY="27.0" mnemonicParsing="false" onAction="#showProjects" prefHeight="25.0" prefWidth="73.0" text="Projects" />
+      <Button fx:id="usersButton" layoutX="111.0" layoutY="27.0" mnemonicParsing="false" onAction="#showUsers" prefHeight="25.0" prefWidth="73.0" text="Users" />
+      <Button fx:id="stagesButton" disable="true" layoutX="307.0" layoutY="27.0" mnemonicParsing="false" onAction="#showStages" text="Stages" />
    </children>
 </AnchorPane>

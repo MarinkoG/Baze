@@ -2,7 +2,6 @@ drop schema if exists construction_company;
 create schema construction_company default character set utf8 default collate utf8_unicode_ci;
 use construction_company;
 
-
 CREATE TABLE ADDRESS
 (
 	Address_id            INTEGER AUTO_INCREMENT,
@@ -67,8 +66,6 @@ CREATE TABLE EMPLOYEE
 (
 	Personal_id_Number    VARCHAR(20) NOT NULL,
 	Salary                INTEGER NULL,
-	Bank_account          VARCHAR(20) NULL,
-	Profession            VARCHAR(20) NULL,
 	Hourly_rate           INTEGER NULL,
 	 PRIMARY KEY (Personal_id_Number)
 )

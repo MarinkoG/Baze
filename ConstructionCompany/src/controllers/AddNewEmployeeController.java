@@ -5,6 +5,7 @@
  */
 package controllers;
 
+import dao.EmployeeDAO;
 import dto.EmployeeDTO;
 import dto.UserDTO;
 import java.net.URL;
@@ -29,10 +30,6 @@ public class AddNewEmployeeController implements Initializable {
     @FXML
     private TextField lastNameText;
     @FXML
-    private TextField jmbgText;
-    @FXML
-    private TextField professionText;
-    @FXML
     private TextField phoneNumberText;
     @FXML
     private DatePicker dateOfBirthPicker;
@@ -43,13 +40,17 @@ public class AddNewEmployeeController implements Initializable {
     @FXML
     private TextField emailText;
     @FXML
-    private ChoiceBox<?> projectChoiceBox;
-    @FXML
     private TextField numberText;
     @FXML
     private TextField zipCodeText;
     @FXML
     private TextField cityText;
+    @FXML
+    private TextField hourlyRateText;
+    @FXML
+    private TextField salaryText;
+    @FXML
+    private TextField personalIdText;
 
     /**
      * Initializes the controller class.
@@ -61,7 +62,22 @@ public class AddNewEmployeeController implements Initializable {
 
     @FXML
     private void addNewEmployee(ActionEvent event) {
-        System.out.println("Mare addNewEmployee()");
+        String address = cityText.getText() + ", " + streetText.getText() + ", " + zipCodeText.getText()  + ", " + numberText.getText();
+         EmployeeDTO employee = new EmployeeDTO(hourlyRateText.getText(), salaryText.getText(), "", firstNameText.getText(), lastNameText.getText(), personalIdText.getText(), dateOfBirthPicker.getAccessibleText(), phoneNumberText.getText(), emailText.getText(), address);
+        EmployeeDAO.saveEmployee(employee);
+         /*if (employeeBox.isDisable()) {
+            if (UserDAO.updateUser(user)) {
+                warningLabel.setText("Succesufully updated user");
+            } else {
+                warningLabel.setText("Error while updating user");
+            }
+        } else {
+            if (UserDAO.saveUser(user)) {
+            warningLabel.setText("Succesufully saved user");
+            } else {
+                warningLabel.setText("Error while saving user");
+            }
+        }*/
     }
 
     public void setEdit(EmployeeDTO employee) {

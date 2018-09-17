@@ -16,10 +16,10 @@ INSERT INTO `construction_company`.`person` (`Personal_id_Number`, `First_Name`,
 INSERT INTO `construction_company`.`person` (`Personal_id_Number`, `First_Name`, `Last_Name`, `Date_of_birth`, `Address`, `Phone_number`, `E_mail`) VALUES ('3333333333333', 'Bob', 'Graditelj', '1998-03-03', '4', '055-459-856', 'bob@gmail.com');
 INSERT INTO `construction_company`.`person` (`Personal_id_Number`, `First_Name`, `Last_Name`, `Date_of_birth`, `Address`, `Phone_number`, `E_mail`) VALUES ('5555555555555', 'Han', 'Solo', '1973-05-06', '5', '055', 'hans@yahoo.com');
 
-INSERT INTO `construction_company`.`employee` (`Personal_id_Number`, `Salary`, `Bank_account`, `Profession`, `Hourly_rate`) VALUES ('1234567891011', '0', '4512684558841', 'Engineer', '10');
-INSERT INTO `construction_company`.`employee` (`Personal_id_Number`, `Salary`, `Bank_account`, `Profession`, `Hourly_rate`) VALUES ('1111111111111', '0', '8545484545454', 'Worker', '5');
-INSERT INTO `construction_company`.`employee` (`Personal_id_Number`, `Salary`, `Bank_account`, `Profession`, `Hourly_rate`) VALUES ('2222222222222', '0', '4975124612545', 'Bricklayer', '6');
-INSERT INTO `construction_company`.`employee` (`Personal_id_Number`, `Salary`, `Bank_account`, `Profession`, `Hourly_rate`) VALUES ('3333333333333', '0', '2342472383753', 'Driver', '5');
+INSERT INTO `construction_company`.`employee` (`Personal_id_Number`, `Salary`, `Hourly_rate`) VALUES ('1234567891011', '0', '10');
+INSERT INTO `construction_company`.`employee` (`Personal_id_Number`, `Salary`, `Hourly_rate`) VALUES ('1111111111111', '0', '5');
+INSERT INTO `construction_company`.`employee` (`Personal_id_Number`, `Salary`, `Hourly_rate`) VALUES ('2222222222222', '0', '6');
+INSERT INTO `construction_company`.`employee` (`Personal_id_Number`, `Salary`, `Hourly_rate`) VALUES ('3333333333333', '0', '5');
 
 INSERT INTO `construction_company`.`material` (`Name`, `Description`, `Unit`) VALUES ('Brick20x40x20', 'Brick dimensions 20x40x20', 'units');
 INSERT INTO `construction_company`.`material` (`Name`, `Description`, `Unit`) VALUES ('Brick 10x20x5', 'Brick dimensions 10x20x5', 'units');
@@ -41,4 +41,13 @@ INSERT INTO `construction_company`.`project` (`Name`, `Description`, `Start_date
 
 create view show_users as SELECT person.Personal_id_Number,First_Name, Last_Name, Username, Password, Privilege  FROM user_account inner join person on user_account.Personal_id_Number=person.Personal_id_Number;
 create view employees_without_account as SELECT employee.Personal_id_Number,First_Name, Last_Name FROM employee  left join person on employee.Personal_id_Number=person.Personal_id_Number where employee.Personal_id_Number not in(select user_account.Personal_id_Number from user_account);
-create view show_employees as SELECT Profession, Hourly_rate, Salary, Bank_account, Username, Password, Privilege, First_Name, Last_Name, person.Personal_id_Number, Date_of_birth, Address, Phone_number, E_mail  FROM employee left join person on employee.Personal_id_Number=person.Personal_id_Number left join user_account on employee.Personal_id_Number=user_account.Personal_id_Number;
+create view show_employees as SELECT Hourly_rate, Salary, Username, Password, Privilege, First_Name, Last_Name, person.Personal_id_Number, Date_of_birth, Phone_number, E_mail, City, Street, Zip_code, House_number FROM employee left join person on employee.Personal_id_Number=person.Personal_id_Number left join user_account on employee.Personal_id_Number=user_account.Personal_id_Number left join address on person.Address=address.Address_id;
+
+delimiter //
+create procedure get_address(in id integer, out res varchar(256))
+begin
+	set res='';
+	set res=concat(res, (SELECT City FROM construction_company.address where Address_id=id));
+
+end //
+delimiter ;

@@ -50,13 +50,9 @@ public class EmployeeFormController implements Initializable {
     @FXML
     private TableColumn<EmployeeDTO, String> emailColumn;
     @FXML
-    private TableColumn<EmployeeDTO, String> professionColumn;
-    @FXML
     private TableColumn<EmployeeDTO, String> hourlyRateColumn;
     @FXML
     private TableColumn<EmployeeDTO, String> salaryColumn;
-    @FXML
-    private TableColumn<EmployeeDTO, String> bankAccountColumn;
     @FXML
     private TableColumn<EmployeeDTO, String> usernameColumn;
     @FXML
@@ -80,7 +76,8 @@ public class EmployeeFormController implements Initializable {
             Scene myScene = new Scene(myPane);
             constructioncompany.ConstructionCompany.addNewEmployeeForm.setTitle("Add New Employee");
             constructioncompany.ConstructionCompany.addNewEmployeeForm.setScene(myScene);
-            constructioncompany.ConstructionCompany.addNewEmployeeForm.show();
+            constructioncompany.ConstructionCompany.addNewEmployeeForm.showAndWait();
+            fillTable();
             //closeMainForm();
         } catch (Exception e) {
             e.printStackTrace();
@@ -97,10 +94,8 @@ public class EmployeeFormController implements Initializable {
         addressColumn.setCellValueFactory(new PropertyValueFactory<EmployeeDTO, String>("address"));
         phoneNumberColumn.setCellValueFactory(new PropertyValueFactory<EmployeeDTO, String>("phoneNumber"));
         emailColumn.setCellValueFactory(new PropertyValueFactory<EmployeeDTO, String>("email"));
-        professionColumn.setCellValueFactory(new PropertyValueFactory<EmployeeDTO, String>("profession"));
         hourlyRateColumn.setCellValueFactory(new PropertyValueFactory<EmployeeDTO, String>("hourlyRate"));
         salaryColumn.setCellValueFactory(new PropertyValueFactory<EmployeeDTO, String>("salary"));
-        bankAccountColumn.setCellValueFactory(new PropertyValueFactory<EmployeeDTO, String>("bankAccount"));
         usernameColumn.setCellValueFactory(new PropertyValueFactory<EmployeeDTO, String>("username"));
         for (int i = 0; i < employees.size(); i++) {
             employeesTable.getItems().add(employees.get(i));
@@ -130,7 +125,6 @@ public class EmployeeFormController implements Initializable {
     @FXML
     private void deleteEmployee(ActionEvent event) {
         EmployeeDTO selectedEmployee = employeesTable.getSelectionModel().getSelectedItem();
-        System.out.println("BRISI ---"+selectedEmployee.getPersonalIdNumber());
         EmployeeDAO.deleteEmployee(selectedEmployee);
         fillTable();
     }

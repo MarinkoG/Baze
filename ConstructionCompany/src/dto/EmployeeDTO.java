@@ -11,10 +11,8 @@ package dto;
  */
 public class EmployeeDTO extends PersonDTO{
 
-    private String profession;
     private String hourlyRate;
     private String salary;
-    private String bankAccount;
     private String username;
     private String password;
     private String privilege;
@@ -23,33 +21,20 @@ public class EmployeeDTO extends PersonDTO{
         super();
     }
 
-    public EmployeeDTO(String profession, String hourlyRate, String salary, String bankAccount, String username, String firstName, String lastName, String personalId, String dateOfBirth, String address, String phoneNumber, String email) {
+    public EmployeeDTO(String hourlyRate, String salary, String username, String firstName, String lastName, String personalId, String dateOfBirth, String phoneNumber, String email, String address) {
         super(firstName, lastName, personalId, dateOfBirth, address, phoneNumber, email);
-        this.profession = profession;
         this.hourlyRate = hourlyRate;
         this.salary = salary;
-        this.bankAccount = bankAccount;
         this.username = username;
     }
 
-    public EmployeeDTO(String profession, String hourlyRate, String salary, String bankAccount, String username, String password, String privilege, String firstName, String lastName, String personalId, String dateOfBirth, String address, String phoneNumber, String email) {
+    public EmployeeDTO(String hourlyRate, String salary, String username, String password, String privilege, String firstName, String lastName, String personalId, String dateOfBirth, String phoneNumber, String email, String address) {
         super(firstName, lastName, personalId, dateOfBirth, address, phoneNumber, email);
-        this.profession = profession;
         this.hourlyRate = hourlyRate;
         this.salary = salary;
-        this.bankAccount = bankAccount;
         this.username = username;
         this.password = password;
         this.privilege = privilege;
-    }
-
-    
-    public String getProfession() {
-        return profession;
-    }
-
-    public void setProfession(String profession) {
-        this.profession = profession;
     }
 
     public String getHourlyRate() {
@@ -66,14 +51,6 @@ public class EmployeeDTO extends PersonDTO{
 
     public void setSalary(String salary) {
         this.salary = salary;
-    }
-
-    public String getBankAccount() {
-        return bankAccount;
-    }
-
-    public void setBankAccount(String bankAccount) {
-        this.bankAccount = bankAccount;
     }
 
     public String getUsername() {

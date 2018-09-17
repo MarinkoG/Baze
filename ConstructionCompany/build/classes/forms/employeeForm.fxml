@@ -19,10 +19,8 @@
                   <TableColumn fx:id="addressColumn" prefWidth="98.0" text="Address" />
                   <TableColumn fx:id="phoneNumberColumn" prefWidth="107.0" text="Phone Number" />
                   <TableColumn fx:id="emailColumn" prefWidth="68.0" text="E-mail" />
-                  <TableColumn fx:id="professionColumn" prefWidth="68.0" text="Profession" />
                   <TableColumn fx:id="hourlyRateColumn" prefWidth="68.0" text="Hourly rate" />
                   <TableColumn fx:id="salaryColumn" prefWidth="68.0" text="Salary" />
-                  <TableColumn fx:id="bankAccountColumn" prefWidth="68.0" text="Bank account" />
                   <TableColumn fx:id="usernameColumn" prefWidth="68.0" text="Username" />
               </columns>
                <columnResizePolicy>

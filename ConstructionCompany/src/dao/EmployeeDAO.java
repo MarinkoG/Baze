@@ -33,7 +33,8 @@ public class EmployeeDAO {
             statement = connection.prepareCall(query);
             resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                employees.add(new EmployeeDTO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6), resultSet.getString(7), resultSet.getString(8), resultSet.getString(9), resultSet.getString(10), resultSet.getString(11), resultSet.getString(12), resultSet.getString(13), resultSet.getString(14)));
+                String address = resultSet.getString(12) + ", " + resultSet.getString(13) + ", " + resultSet.getString(14) + ", " + resultSet.getString(15);
+                employees.add(new EmployeeDTO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6), resultSet.getString(7), resultSet.getString(8), resultSet.getString(9), resultSet.getString(10), resultSet.getString(11), address));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -81,4 +82,38 @@ public class EmployeeDAO {
             ConnectionPool.getInstance().checkIn(connection);
         }
     }
+
+    public static boolean saveEmployee(EmployeeDTO employee) {
+        PersonDAO.savePerson(employee);
+        Connection connection = null;
+        String query = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connection = ConnectionPool.getInstance().checkOut();
+
+            query = "insert into employee (Personal_id_Number, Salary, Hourly_rate) values (?, ?, ?)";
+
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, employee.getPersonalIdNumber());
+            preparedStatement.setString(2, employee.getSalary());
+            preparedStatement.setString(3, employee.getHourlyRate());
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            if (preparedStatement != null) {
+                try {
+                    preparedStatement.close();
+                    return true;
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            ConnectionPool.getInstance().checkIn(connection);
+        }
+        return false;
+    }
+
 }
