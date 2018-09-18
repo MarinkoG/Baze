@@ -66,12 +66,12 @@ public class AddNewEmployeeController implements Initializable {
     @FXML
     private void addNewEmployee(ActionEvent event) {
         String address = cityText.getText() + ", " + streetText.getText() + ", " + zipCodeText.getText() + ", " + numberText.getText();
-        EmployeeDTO employee = new EmployeeDTO(hourlyRateText.getText(), salaryText.getText(), "", firstNameText.getText(), lastNameText.getText(), personalIdText.getText(), dateOfBirthPicker.getAccessibleText(), phoneNumberText.getText(), emailText.getText(), address);
+        EmployeeDTO employee = new EmployeeDTO(hourlyRateText.getText(), salaryText.getText(), "", firstNameText.getText(), lastNameText.getText(), personalIdText.getText(), dateOfBirthPicker.getValue().toString(), phoneNumberText.getText(), emailText.getText(), address);
 
         if (EmployeeDAO.saveEmployee(employee)) {
-            warningLabel.setText("Succesufully saved user");
+            warningLabel.setText("Succesufully saved employee");
         } else {
-            warningLabel.setText("Error while saving user");
+            warningLabel.setText("Error while saving employee");
         }
         /*if (employeeBox.isDisable()) {
             if (UserDAO.updateUser(user)) {

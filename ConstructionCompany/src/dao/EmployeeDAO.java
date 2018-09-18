@@ -88,7 +88,6 @@ public class EmployeeDAO {
     }
 
     public static boolean saveEmployee(EmployeeDTO employee) {
-      //  PersonDAO.savePerson(employee);
         Connection connection = null;
         String query = null;
         ResultSet resultSet = null;
@@ -98,15 +97,17 @@ public class EmployeeDAO {
 
            // query = "insert into employee (Personal_id_Number, Salary, Hourly_rate) values (?, ?, ?)";
             
-                        query = "call save_employee(?, ?, ?, ?, ?, ?, ?)";
+            query = "call save_employee(?, ?, ?, ?, ?, ?, ?, ?)";
             callableStatement = connection.prepareCall(query);
             callableStatement.setString(1,  employee.getPersonalIdNumber());
             callableStatement.setString(2, employee.getFirstName());
             callableStatement.setString(3, employee.getLastName());
             callableStatement.setString(4, employee.getDateOfBirth());
-            callableStatement.setString(5, employee.getAddress());
+            callableStatement.setInt(5, 2);
             callableStatement.setString(6, employee.getPhoneNumber());
             callableStatement.setString(7, employee.getEmail());
+            callableStatement.registerOutParameter(8, Types.VARCHAR);
+            callableStatement.executeUpdate();
 
         } catch (SQLException e) {
             e.printStackTrace();

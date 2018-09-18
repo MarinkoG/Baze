@@ -10,28 +10,24 @@ package dto;
  * @author mgrubljesic
  */
 public class PersonDTO {
+
     private String firstName;
     private String lastName;
     private String personalIdNumber;
     private String dateOfBirth;
-    private String address;
+    private Address address;
     private String phoneNumber;
     private String email;
 
     public PersonDTO() {
     }
 
-    public PersonDTO(String firstName, String lastName, String personalId, String dateOfBirth, String address, String phoneNumber, String email) {
+    public PersonDTO(String firstName, String lastName, String personalId, String dateOfBirth, String phoneNumber, String email, Address address) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.personalIdNumber = personalId;
         this.dateOfBirth = dateOfBirth;
-        if (address.contains("null")) {
-            this.address = "";
-        }else{
-            this.address = address;
-        }
-        
+        this.address = address;
         this.phoneNumber = phoneNumber;
         this.email = email;
     }
@@ -69,11 +65,12 @@ public class PersonDTO {
     }
 
     public String getAddress() {
-        return address;
+        return address.getAddress();
     }
 
     public void setAddress(String address) {
-        this.address = address;
+        String parts[] = address.split(", ");
+        this.address = new Address(parts[0], parts[1], new Integer(parts[2]), new Integer(parts[3]));
     }
 
     public String getPhoneNumber() {

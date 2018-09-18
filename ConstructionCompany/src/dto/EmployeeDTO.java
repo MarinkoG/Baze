@@ -21,15 +21,15 @@ public class EmployeeDTO extends PersonDTO{
         super();
     }
 
-    public EmployeeDTO(String hourlyRate, String salary, String username, String firstName, String lastName, String personalId, String dateOfBirth, String phoneNumber, String email, String address) {
-        super(firstName, lastName, personalId, dateOfBirth, address, phoneNumber, email);
+    public EmployeeDTO(String hourlyRate, String salary, String username, String firstName, String lastName, String personalId, String dateOfBirth, String phoneNumber, String email, Address address) {
+        super(firstName, lastName, personalId, dateOfBirth, phoneNumber, email, address);
         this.hourlyRate = hourlyRate;
         this.salary = salary;
         this.username = username;
     }
 
-    public EmployeeDTO(String hourlyRate, String salary, String username, String password, String privilege, String firstName, String lastName, String personalId, String dateOfBirth, String phoneNumber, String email, String address) {
-        super(firstName, lastName, personalId, dateOfBirth, address, phoneNumber, email);
+    public EmployeeDTO(String hourlyRate, String salary, String username, String password, String privilege, String firstName, String lastName, String personalId, String dateOfBirth, String phoneNumber, String email, Address address) {
+        super(firstName, lastName, personalId, dateOfBirth, phoneNumber, email, address);
         this.hourlyRate = hourlyRate;
         this.salary = salary;
         this.username = username;

@@ -41,7 +41,7 @@ INSERT INTO `construction_company`.`project` (`Name`, `Description`, `Start_date
 
 create view show_users as SELECT person.Personal_id_Number,First_Name, Last_Name, Username, Password, Privilege  FROM user_account inner join person on user_account.Personal_id_Number=person.Personal_id_Number;
 create view employees_without_account as SELECT employee.Personal_id_Number,First_Name, Last_Name FROM employee  left join person on employee.Personal_id_Number=person.Personal_id_Number where employee.Personal_id_Number not in(select user_account.Personal_id_Number from user_account);
-create view show_employees as SELECT Hourly_rate, Salary, Username, Password, Privilege, First_Name, Last_Name, person.Personal_id_Number, Date_of_birth, Phone_number, E_mail, City, Street, Zip_code, House_number FROM employee left join person on employee.Personal_id_Number=person.Personal_id_Number left join user_account on employee.Personal_id_Number=user_account.Personal_id_Number left join address on person.Address=address.Address_id;
+create view show_employees as SELECT Hourly_rate, Salary, Username, Password, Privilege, First_Name, Last_Name, person.Personal_id_Number, Date_of_birth, Phone_number, E_mail, Address, City, Street, Zip_code, House_number FROM employee left join person on employee.Personal_id_Number=person.Personal_id_Number left join user_account on employee.Personal_id_Number=user_account.Personal_id_Number left join address on person.Address=address.Address_id;
 
 delimiter //
 create procedure get_address(in id integer, out res varchar(256))
