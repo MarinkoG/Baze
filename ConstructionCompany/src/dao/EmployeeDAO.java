@@ -8,11 +8,15 @@ package dao;
 import connectionpool.ConnectionPool;
 import dto.EmployeeDTO;
 import dto.UserDTO;
+import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
  *
@@ -84,28 +88,33 @@ public class EmployeeDAO {
     }
 
     public static boolean saveEmployee(EmployeeDTO employee) {
-        PersonDAO.savePerson(employee);
+      //  PersonDAO.savePerson(employee);
         Connection connection = null;
         String query = null;
-        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        CallableStatement callableStatement = null;
         try {
             connection = ConnectionPool.getInstance().checkOut();
 
-            query = "insert into employee (Personal_id_Number, Salary, Hourly_rate) values (?, ?, ?)";
-
-            preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, employee.getPersonalIdNumber());
-            preparedStatement.setString(2, employee.getSalary());
-            preparedStatement.setString(3, employee.getHourlyRate());
-            preparedStatement.executeUpdate();
+           // query = "insert into employee (Personal_id_Number, Salary, Hourly_rate) values (?, ?, ?)";
+            
+                        query = "call save_employee(?, ?, ?, ?, ?, ?, ?)";
+            callableStatement = connection.prepareCall(query);
+            callableStatement.setString(1,  employee.getPersonalIdNumber());
+            callableStatement.setString(2, employee.getFirstName());
+            callableStatement.setString(3, employee.getLastName());
+            callableStatement.setString(4, employee.getDateOfBirth());
+            callableStatement.setString(5, employee.getAddress());
+            callableStatement.setString(6, employee.getPhoneNumber());
+            callableStatement.setString(7, employee.getEmail());
 
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
         } finally {
-            if (preparedStatement != null) {
+            if (callableStatement != null) {
                 try {
-                    preparedStatement.close();
+                    callableStatement.close();
                     return true;
                 } catch (SQLException e) {
                     e.printStackTrace();

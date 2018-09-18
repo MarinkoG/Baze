@@ -53,3 +53,20 @@ SELECT Hourly_rate, Salary, Username, Password, Privilege, First_Name, Last_Name
 
 INSERT INTO `tools` (`Name`, `Description`, `Amount`) VALUES ('Hmare', 'Basic small hammer', '15');
 select LAST_INSERT_ID();
+
+
+
+
+delimiter //
+create procedure save_employee(in Personal_id_Number varchar(20), in First_Name varchar(20), in Last_Name varchar(20), in Date_of_birth varchar(20), in Phone_number varchar(20), in E_mail varchar(20), out res varchar(256))
+begin
+	set res=1;
+INSERT INTO `construction_company`.`person` (`Personal_id_Number`, `First_Name`, `Last_Name`, `Date_of_birth`, `Address`, `Phone_number`, `E_mail`) VALUES (Personal_id_Number, First_Name, Last_Name, Date_of_birth, Phone_number, E_mail);
+
+end //
+delimiter ;
+
+
+
+
+select save_employee('33333336454', 'aaaa', 'aaaa', '2000-05-06', '3', '232323', 'aaaaaaaaa', '');
