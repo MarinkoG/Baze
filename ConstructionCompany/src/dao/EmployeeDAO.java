@@ -6,6 +6,7 @@
 package dao;
 
 import connectionpool.ConnectionPool;
+import dto.Address;
 import dto.EmployeeDTO;
 import dto.UserDTO;
 import java.sql.CallableStatement;
@@ -37,7 +38,10 @@ public class EmployeeDAO {
             statement = connection.prepareCall(query);
             resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                String address = resultSet.getString(12) + ", " + resultSet.getString(13) + ", " + resultSet.getString(14) + ", " + resultSet.getString(15);
+                Address address = null;
+                if (resultSet.getString(12) != null) {
+                    address = new Address(new Integer(resultSet.getString(12)), resultSet.getString(13), resultSet.getString(14), resultSet.getString(15), resultSet.getString(16));
+                }
                 employees.add(new EmployeeDTO(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6), resultSet.getString(7), resultSet.getString(8), resultSet.getString(9), resultSet.getString(10), resultSet.getString(11), address));
             }
         } catch (SQLException e) {
@@ -88,6 +92,12 @@ public class EmployeeDAO {
     }
 
     public static boolean saveEmployee(EmployeeDTO employee) {
+        int addressId = -1;
+        
+        if (employee.getAddress() != null) {
+            addressId = saveAddress(employee.getAddress());
+        }
+        
         Connection connection = null;
         String query = null;
         ResultSet resultSet = null;
@@ -95,18 +105,18 @@ public class EmployeeDAO {
         try {
             connection = ConnectionPool.getInstance().checkOut();
 
-           // query = "insert into employee (Personal_id_Number, Salary, Hourly_rate) values (?, ?, ?)";
-            
-            query = "call save_employee(?, ?, ?, ?, ?, ?, ?, ?)";
+            query = "call save_employee(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             callableStatement = connection.prepareCall(query);
             callableStatement.setString(1,  employee.getPersonalIdNumber());
             callableStatement.setString(2, employee.getFirstName());
             callableStatement.setString(3, employee.getLastName());
             callableStatement.setString(4, employee.getDateOfBirth());
-            callableStatement.setInt(5, 2);
+            callableStatement.setInt(5, addressId);
             callableStatement.setString(6, employee.getPhoneNumber());
             callableStatement.setString(7, employee.getEmail());
-            callableStatement.registerOutParameter(8, Types.VARCHAR);
+            callableStatement.setString(8, employee.getHourlyRate());
+            callableStatement.setString(9, employee.getSalary());
+            callableStatement.registerOutParameter(10, Types.VARCHAR);
             callableStatement.executeUpdate();
 
         } catch (SQLException e) {
@@ -124,6 +134,44 @@ public class EmployeeDAO {
             ConnectionPool.getInstance().checkIn(connection);
         }
         return false;
+        
+        
+       
+    }
+    
+    public static int saveAddress(Address address) {
+        int id = -1;
+        Connection connection = null;
+        String query = null;
+        ResultSet resultSet = null;
+        CallableStatement callableStatement = null;
+        try {
+            connection = ConnectionPool.getInstance().checkOut();
+
+            query = "call save_address(?, ?, ?, ?, ?)";
+            callableStatement = connection.prepareCall(query);
+            callableStatement.setString(1, address.getCity());
+            callableStatement.setString(2, address.getStreet());
+            callableStatement.setString(3, address.getZipCode());
+            callableStatement.setString(4, address.getHouseNumber());
+            callableStatement.registerOutParameter(5, Types.INTEGER);
+            callableStatement.executeUpdate();
+            id = callableStatement.getInt(5);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return id;
+        } finally {
+            if (callableStatement != null) {
+                try {
+                    callableStatement.close();
+                    return id;
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            ConnectionPool.getInstance().checkIn(connection);
+        }
+        return id;
     }
 
 }

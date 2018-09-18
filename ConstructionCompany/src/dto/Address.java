@@ -14,25 +14,25 @@ public class Address {
     private int id;
     private String city;
     private String street;
-    private int zipCode;
-    private int number;
+    private String zipCode;
+    private String houseNumber;
 
     public Address() {
     }
 
-    public Address(int id, String city, String street, int zipCode, int number) {
+    public Address(int id, String city, String street, String zipCode, String houseNumber) {
         this.id = id;
         this.city = city;
         this.street = street;
         this.zipCode = zipCode;
-        this.number = number;
+        this.houseNumber = houseNumber;
     }
 
-    public Address(String city, String street, int zipCode, int number) {
+    public Address(String city, String street, String zipCode, String houseNumber) {
         this.city = city;
         this.street = street;
         this.zipCode = zipCode;
-        this.number = number;
+        this.houseNumber = houseNumber;
     }
 
     
@@ -60,24 +60,24 @@ public class Address {
         this.street = street;
     }
 
-    public int getZipCode() {
+    public String getZipCode() {
         return zipCode;
     }
 
-    public void setZipCode(int zipCode) {
+    public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
     }
 
-    public int getNumber() {
-        return number;
+    public String getHouseNumber() {
+        return houseNumber;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public void setHouseNumber(String houseNumber) {
+        this.houseNumber = houseNumber;
     }
 
     public String getAddress() {
-        return city + ", " + street + ", " + number + ", " + zipCode;
+        return city + ", " + street + ", " + zipCode + ", " + houseNumber;
 
     }
 }

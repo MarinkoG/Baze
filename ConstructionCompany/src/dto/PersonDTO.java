@@ -15,7 +15,7 @@ public class PersonDTO {
     private String lastName;
     private String personalIdNumber;
     private String dateOfBirth;
-    private Address address;
+    private Address address = null;
     private String phoneNumber;
     private String email;
 
@@ -64,13 +64,24 @@ public class PersonDTO {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String getAddress() {
-        return address.getAddress();
+    public String getAddressString() {
+        if (address != null) {
+            return address.getAddress();
+        } else {
+            return "";
+        }
+        
     }
+
+    public Address getAddress() {
+        return address;
+    }
+    
+    
 
     public void setAddress(String address) {
         String parts[] = address.split(", ");
-        this.address = new Address(parts[0], parts[1], new Integer(parts[2]), new Integer(parts[3]));
+        this.address = new Address(parts[0], parts[1], parts[2], parts[3]);
     }
 
     public String getPhoneNumber() {

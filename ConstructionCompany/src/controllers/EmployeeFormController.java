@@ -6,9 +6,7 @@
 package controllers;
 
 import dao.EmployeeDAO;
-import dao.UserDAO;
 import dto.EmployeeDTO;
-import dto.UserDTO;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -21,6 +19,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -53,8 +52,6 @@ public class EmployeeFormController implements Initializable {
     private TableColumn<EmployeeDTO, String> hourlyRateColumn;
     @FXML
     private TableColumn<EmployeeDTO, String> salaryColumn;
-    @FXML
-    private TableColumn<EmployeeDTO, String> usernameColumn;
     @FXML
     private TableView<EmployeeDTO> employeesTable;
     @FXML
@@ -91,12 +88,11 @@ public class EmployeeFormController implements Initializable {
         firstNameColumn.setCellValueFactory(new PropertyValueFactory<EmployeeDTO, String>("firstName"));
         lastNameColumn.setCellValueFactory(new PropertyValueFactory<EmployeeDTO, String>("lastName"));
         dateOfBirthColumn.setCellValueFactory(new PropertyValueFactory<EmployeeDTO, String>("dateOfBirth"));
-        addressColumn.setCellValueFactory(new PropertyValueFactory<EmployeeDTO, String>("address"));
+        addressColumn.setCellValueFactory(new PropertyValueFactory<EmployeeDTO, String>("addressString"));
         phoneNumberColumn.setCellValueFactory(new PropertyValueFactory<EmployeeDTO, String>("phoneNumber"));
         emailColumn.setCellValueFactory(new PropertyValueFactory<EmployeeDTO, String>("email"));
         hourlyRateColumn.setCellValueFactory(new PropertyValueFactory<EmployeeDTO, String>("hourlyRate"));
         salaryColumn.setCellValueFactory(new PropertyValueFactory<EmployeeDTO, String>("salary"));
-        usernameColumn.setCellValueFactory(new PropertyValueFactory<EmployeeDTO, String>("username"));
         for (int i = 0; i < employees.size(); i++) {
             employeesTable.getItems().add(employees.get(i));
         }
@@ -129,4 +125,8 @@ public class EmployeeFormController implements Initializable {
         fillTable();
     }
 
+    @FXML
+    private void refreshScreen(MouseEvent event) {
+        fillTable();
+    }
 }

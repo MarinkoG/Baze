@@ -67,9 +67,38 @@ end //
 delimiter ;
 
 
+delimiter //
+create procedure save_person(in Personal_id_Number varchar(20), in First_Name varchar(20), in Last_Name varchar(20), in Date_of_birth varchar(20), in Address integer, in Phone_number varchar(20), in E_mail varchar(20), out res varchar(256))
+begin
+	set res='false';
+    set Address = (SELECT IF(Address<0, NULL, Address)); 
+INSERT INTO `construction_company`.`person` (`Personal_id_Number`, `First_Name`, `Last_Name`, `Date_of_birth`, `Address`, `Phone_number`, `E_mail`) VALUES (Personal_id_Number, First_Name, Last_Name, Date_of_birth, Address, Phone_number, E_mail);
+
+set res='true';
+end //
+delimiter ;
+
+delimiter //
+create procedure save_address(in City varchar(50), in Street varchar(50), in House_number varchar(20), in Zip_code varchar(20), out res integer)
+begin
+	set res=0;
+    
+INSERT INTO `construction_company`.`address` (`City`, `Street`, `Zip_code`, `House_number`) VALUES (City, Street, House_number, Zip_code);
+
+set res=(select LAST_INSERT_ID());
+
+end //
+delimiter ;
 
 
-select save_employee('33333336454', 'aaaa', 'aaaa', '2000-05-06', '3', '232323', 'aaaaaaaaa', '');
+delimiter //
+create procedure save_employee(in Personal_id_Number varchar(20), in First_Name varchar(20), in Last_Name varchar(20), in Date_of_birth varchar(20), in Address integer, in Phone_number varchar(20), in E_mail varchar(20), in Hourly_rate integer, in Salary integer, out res varchar(256))
+begin
+	set res='false';
+    set Address = (SELECT IF(Address<0, NULL, Address)); 
+INSERT INTO `construction_company`.`person` (`Personal_id_Number`, `First_Name`, `Last_Name`, `Date_of_birth`, `Address`, `Phone_number`, `E_mail`) VALUES (Personal_id_Number, First_Name, Last_Name, Date_of_birth, Address, Phone_number, E_mail);
+INSERT INTO `construction_company`.`employee` (`Personal_id_Number`, `Salary`, `Hourly_rate`) VALUES (Personal_id_Number, Hourly_rate, Salary);
 
-
-SELECT Hourly_rate, Salary, Username, Password, Privilege, First_Name, Last_Name, person.Personal_id_Number, Date_of_birth, Phone_number, E_mail, Address, City, Street, Zip_code, House_number FROM employee left join person on employee.Personal_id_Number=person.Personal_id_Number left join user_account on employee.Personal_id_Number=user_account.Personal_id_Number left join address on person.Address=address.Address_id;
+set res='true';
+end //
+delimiter ;

@@ -6,9 +6,11 @@
 package controllers;
 
 import dao.EmployeeDAO;
+import dto.Address;
 import dto.EmployeeDTO;
 import dto.UserDTO;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,6 +20,8 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.InputMethodEvent;
+import javafx.scene.input.KeyEvent;
 
 /**
  * FXML Controller class
@@ -55,6 +59,7 @@ public class AddNewEmployeeController implements Initializable {
     @FXML
     private Label warningLabel;
 
+    EmployeeDTO employee;
     /**
      * Initializes the controller class.
      */
@@ -65,9 +70,13 @@ public class AddNewEmployeeController implements Initializable {
 
     @FXML
     private void addNewEmployee(ActionEvent event) {
-        String address = cityText.getText() + ", " + streetText.getText() + ", " + zipCodeText.getText() + ", " + numberText.getText();
-        EmployeeDTO employee = new EmployeeDTO(hourlyRateText.getText(), salaryText.getText(), "", firstNameText.getText(), lastNameText.getText(), personalIdText.getText(), dateOfBirthPicker.getValue().toString(), phoneNumberText.getText(), emailText.getText(), address);
+        Address address = null;
 
+        if (!(cityText.getText().equals("") && streetText.getText().equals("") && numberText.getText().equals("") && zipCodeText.getText().equals(""))) {
+            address = new Address(cityText.getText(), streetText.getText(), numberText.getText(), zipCodeText.getText());
+        }
+
+        EmployeeDTO employee = new EmployeeDTO(hourlyRateText.getText(), salaryText.getText(), "", firstNameText.getText(), lastNameText.getText(), personalIdText.getText(), dateOfBirthPicker.getValue().toString(), phoneNumberText.getText(), emailText.getText(), address);
         if (EmployeeDAO.saveEmployee(employee)) {
             warningLabel.setText("Succesufully saved employee");
         } else {
@@ -88,13 +97,21 @@ public class AddNewEmployeeController implements Initializable {
         }*/
     }
 
-    public void setEdit(EmployeeDTO employee) {
-        /*   employeeBox.getItems().clear();
-        employeeBox.getItems().add(user.getPersonalIdNumber() + ", " + user.getFirstName() + ", " + user.getLastName());
-        employeeBox.setValue(employeeBox.getItems().get(0));
-        employeeBox.setDisable(true);
-        usernameText.setText(user.getUsername());
-        privilegeBox.setValue(user.getPrivilege());*/
+    public void setEdit(EmployeeDTO selectedEmployee) {
+        employee = selectedEmployee;
+        personalIdText.setText(employee.getPersonalIdNumber());
+        firstNameText.setText(employee.getFirstName());
+        lastNameText.setText(employee.getLastName());
+        dateOfBirthPicker.setValue(LocalDate.parse(employee.getDateOfBirth()));
+        if (employee.getAddress() != null) {
+            cityText.setText(employee.getAddress().getCity());
+            streetText.setText(employee.getAddress().getStreet());
+            zipCodeText.setText(employee.getAddress().getZipCode());
+            numberText.setText(employee.getAddress().getHouseNumber());
+        }
+        phoneNumberText.setText(employee.getPhoneNumber());
+        emailText.setText(employee.getEmail());
+        hourlyRateText.setText(employee.getHourlyRate());
+        salaryText.setText(employee.getSalary());
     }
-
 }

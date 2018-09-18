@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="825.0" prefWidth="1111.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EmployeeFormController">
+<AnchorPane id="AnchorPane" onMouseClicked="#refreshScreen" prefHeight="825.0" prefWidth="1111.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EmployeeFormController">
    <children>
       <ScrollPane fitToHeight="true" fitToWidth="true" prefViewportHeight="818.0" prefViewportWidth="1060.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="132.0" AnchorPane.topAnchor="0.0">
          <content>
@@ -21,7 +21,6 @@
                   <TableColumn fx:id="emailColumn" prefWidth="68.0" text="E-mail" />
                   <TableColumn fx:id="hourlyRateColumn" prefWidth="68.0" text="Hourly rate" />
                   <TableColumn fx:id="salaryColumn" prefWidth="68.0" text="Salary" />
-                  <TableColumn fx:id="usernameColumn" prefWidth="68.0" text="Username" />
               </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
