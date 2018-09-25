@@ -9,7 +9,7 @@ package dto;
  *
  * @author mgrubljesic
  */
-public class EmployeeDTO extends PersonDTO{
+public class EmployeeDTO extends PersonDTO {
 
     private String hourlyRate;
     private String salary;
@@ -21,14 +21,14 @@ public class EmployeeDTO extends PersonDTO{
         super();
     }
 
-    public EmployeeDTO(String hourlyRate, String salary, String username, String firstName, String lastName, String personalId, String dateOfBirth, String phoneNumber, String email, Address address) {
+    public EmployeeDTO(String hourlyRate, String salary, String username, String firstName, String lastName, String personalId, String dateOfBirth, String phoneNumber, String email, AddressDTO address) {
         super(firstName, lastName, personalId, dateOfBirth, phoneNumber, email, address);
         this.hourlyRate = hourlyRate;
         this.salary = salary;
         this.username = username;
     }
 
-    public EmployeeDTO(String hourlyRate, String salary, String username, String password, String privilege, String firstName, String lastName, String personalId, String dateOfBirth, String phoneNumber, String email, Address address) {
+    public EmployeeDTO(String hourlyRate, String salary, String username, String password, String privilege, String firstName, String lastName, String personalId, String dateOfBirth, String phoneNumber, String email, AddressDTO address) {
         super(firstName, lastName, personalId, dateOfBirth, phoneNumber, email, address);
         this.hourlyRate = hourlyRate;
         this.salary = salary;
@@ -76,7 +76,28 @@ public class EmployeeDTO extends PersonDTO{
     public void setPrivilege(String privilege) {
         this.privilege = privilege;
     }
-    
-    
-    
+
+    public boolean equals(EmployeeDTO employee) {
+        boolean equal = false;
+        try {
+            if (this.getPersonalIdNumber().equals(employee.getPersonalIdNumber())
+                    && this.getFirstName().equals(employee.getFirstName())
+                    && this.getLastName().equals(employee.getLastName())
+                    && this.getDateOfBirth().equals(employee.getDateOfBirth())
+                    && this.getAddress().equals(employee.getAddress())
+                    && this.getEmail().equals(employee.getEmail())
+                    && this.getPhoneNumber().equals(employee.getPhoneNumber())
+                    && this.getHourlyRate().equals(employee.getHourlyRate())
+                    && this.getSalary().equals(employee.getSalary())) {
+                return true;
+
+            } else {
+                return false;
+            }
+
+        } catch (Exception e) {
+            return false;
+        }
+
+    }
 }

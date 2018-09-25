@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="403.0" prefWidth="501.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="controllers.WorktimeFormController">
+   <children>
+      <TableView fx:id="workTimeTable" prefHeight="443.0" prefWidth="485.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="146.0" AnchorPane.topAnchor="0.0">
+        <columns>
+          <TableColumn fx:id="dateColumn" prefWidth="105.0" text="Date" />
+          <TableColumn fx:id="worktimeColumn" prefWidth="88.0" text="Worktime" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <Button fx:id="addButton" layoutX="532.0" layoutY="297.0" mnemonicParsing="false" onAction="#addWorktime" prefHeight="25.0" prefWidth="51.0" text="Add" AnchorPane.bottomAnchor="115.0" AnchorPane.rightAnchor="48.0" />
+      <Button fx:id="editButton" layoutX="532.0" layoutY="348.0" mnemonicParsing="false" onAction="#editWorktime" prefHeight="25.0" prefWidth="51.0" text="Edit" AnchorPane.bottomAnchor="70.0" AnchorPane.rightAnchor="48.0" />
+      <Button fx:id="deleteButton" layoutX="532.0" layoutY="396.0" mnemonicParsing="false" onAction="#deleteWorktime" text="Delete" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="48.0" />
+   </children>
+</AnchorPane>

@@ -3,9 +3,23 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Mare/Faks/Baze/NoviBazepr/Baze/ConstructionCompany/src/dto/EmployeeDTO.java</file>
-            <file>file:/D:/Mare/Faks/Baze/NoviBazepr/Baze/ConstructionCompany/src/controllers/AddNewEmployeeController.java</file>
+            <file>file:/D:/Mare/Faks/Baze/NoviBazepr/Baze/ConstructionCompany/src/dao/EmployeeDAO.java</file>
+            <file>file:/D:/Mare/Faks/Baze/NoviBazepr/Baze/ConstructionCompany/src/controllers/AddWorktimeFormController.java</file>
             <file>file:/D:/Mare/Faks/Baze/NoviBazepr/Baze/ConstructionCompany/src/controllers/EmployeeFormController.java</file>
+            <file>file:/D:/Mare/Faks/Baze/NoviBazepr/Baze/ConstructionCompany/src/controllers/UserFormController.java</file>
+            <file>file:/D:/Mare/Faks/Baze/NoviBazepr/Baze/ConstructionCompany/src/dao/UserDAO.java</file>
+            <file>file:/D:/Mare/Faks/Baze/NoviBazepr/Baze/ConstructionCompany/src/controllers/ProjectsFormController.java</file>
+            <file>file:/D:/Mare/Faks/Baze/NoviBazepr/Baze/ConstructionCompany/src/dao/PersonDAO.java</file>
+            <file>file:/D:/Mare/Faks/Baze/NoviBazepr/Baze/ConstructionCompany/src/controllers/AddNewProjectFormController.java</file>
+            <file>file:/D:/Mare/Faks/Baze/NoviBazepr/Baze/ConstructionCompany/src/controllers/WorktimeFormController.java</file>
+            <file>file:/D:/Mare/Faks/Baze/NoviBazepr/Baze/ConstructionCompany/src/controllers/AddNewEmployeeController.java</file>
+            <file>file:/D:/Mare/Faks/Baze/NoviBazepr/Baze/ConstructionCompany/src/dto/ProjectDTO.java</file>
+            <file>file:/D:/Mare/Faks/Baze/NoviBazepr/Baze/ConstructionCompany/src/forms/worktimeForm.fxml</file>
+            <file>file:/D:/Mare/Faks/Baze/NoviBazepr/Baze/ConstructionCompany/src/dto/WorktimeDTO.java</file>
+            <file>file:/D:/Mare/Faks/Baze/NoviBazepr/Baze/ConstructionCompany/src/dto/PersonDTO.java</file>
+            <file>file:/D:/Mare/Faks/Baze/NoviBazepr/Baze/ConstructionCompany/src/dao/WorktimeDAO.java</file>
+            <file>file:/D:/Mare/Faks/Baze/NoviBazepr/Baze/ConstructionCompany/src/dao/ProjectDAO.java</file>
+            <file>file:/D:/Mare/Faks/Baze/NoviBazepr/Baze/ConstructionCompany/src/controllers/NewUserFormController.java</file>
         </group>
     </open-files>
 </project-private>

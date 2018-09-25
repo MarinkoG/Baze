@@ -23,20 +23,21 @@ import java.util.Locale;
  */
 public class UserDAO {
 
-    public static boolean login(String username, String password) {
+    public static String login(String username, String password) {
         Connection connection = null;
         String query = null;
         ResultSet resultSet = null;
         PreparedStatement preparedStatement = null;
+        String personalIdNumber = "";
         try {
             connection = ConnectionPool.getInstance().checkOut();
-            query = "SELECT * FROM user_account where username=? and password=?";
+            query = "SELECT Personal_id_Number FROM user_account where username=? and password=?";
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
             resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                return true;
+                personalIdNumber = resultSet.getString(1);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -57,7 +58,39 @@ public class UserDAO {
             }
             ConnectionPool.getInstance().checkIn(connection);
         }
-        return false;
+        return personalIdNumber;
+    }
+    public static void saveLogin(String id) {
+        Connection connection = null;
+        String query = null;
+        ResultSet resultSet = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connection = ConnectionPool.getInstance().checkOut();
+            query = "insert into login_log (Personal_id_Number, Login_Date) values (?, ?);";
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, id);
+            preparedStatement.setDate(2, new Date(new java.util.Date().getTime()));
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (preparedStatement != null) {
+                try {
+                    preparedStatement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            ConnectionPool.getInstance().checkIn(connection);
+        }
     }
 
     public static ArrayList<UserDTO> getAllUsers() {

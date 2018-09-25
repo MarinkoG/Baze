@@ -31,6 +31,9 @@ public class MainFormController implements Initializable {
     private Button usersButton;
     @FXML
     private Button stagesButton;
+    @FXML
+    private Button worktimeButton;
+    public static String personalIdNumber = "";
 
     /**
      * Initializes the controller class.
@@ -99,6 +102,20 @@ public class MainFormController implements Initializable {
             constructioncompany.ConstructionCompany.stagesForm.setScene(myScene);
             constructioncompany.ConstructionCompany.stagesForm.show();
             //closeMainForm();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void enterWorktime(ActionEvent event) {
+                try {
+            constructioncompany.ConstructionCompany.worktimeForm = new Stage();
+            Pane myPane = (Pane) FXMLLoader.load(getClass().getResource("/forms/worktimeForm.fxml"));
+            Scene myScene = new Scene(myPane);
+            constructioncompany.ConstructionCompany.worktimeForm.setTitle("Worktime");
+            constructioncompany.ConstructionCompany.worktimeForm.setScene(myScene);
+            constructioncompany.ConstructionCompany.worktimeForm.show();
         } catch (Exception e) {
             e.printStackTrace();
         }

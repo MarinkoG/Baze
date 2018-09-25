@@ -10,7 +10,9 @@ import dto.PersonDTO;
 import dto.UserDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -33,7 +35,6 @@ public class PersonDAO {
             preparedStatement.setString(4, person.getDateOfBirth());
             preparedStatement.setString(5, person.getPhoneNumber());
             preparedStatement.setString(6, person.getEmail());
-            System.out.println("RETURN----" + preparedStatement.executeUpdate());;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
@@ -50,5 +51,41 @@ public class PersonDAO {
         }
         return false;
     }
-    
+
+    public static ArrayList<String> getClients() {
+        ArrayList<String> clients = new ArrayList<>();
+
+        Connection connection = null;
+        String query = null;
+        ResultSet resultSet = null;
+        PreparedStatement statement = null;
+        try {
+            connection = ConnectionPool.getInstance().checkOut();
+            query = "SELECT * FROM get_managers";
+            statement = connection.prepareCall(query);
+            resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                clients.add(resultSet.getString(1) + ", " + resultSet.getString(2) + ", " + resultSet.getString(3));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (statement != null) {
+                try {
+                    statement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            ConnectionPool.getInstance().checkIn(connection);
+        }
+        return clients;
+    }
 }

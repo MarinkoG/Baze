@@ -37,6 +37,7 @@ public class LoginFormController implements Initializable {
     @FXML
     private Label passwordLabel;
     
+    
     /**
      * Initializes the controller class.
      */
@@ -53,8 +54,10 @@ public class LoginFormController implements Initializable {
       username = "admin"; //TODO Delete this for testing
       password = "admin";
       
-      if(UserDAO.login(username, password))
+      MainFormController.personalIdNumber = UserDAO.login(username, password);
+      if(!MainFormController.personalIdNumber.equals(""))
       {
+          UserDAO.saveLogin(MainFormController.personalIdNumber);
           showMainForm();
       }
       else

@@ -15,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -102,6 +103,7 @@ public class EmployeeFormController implements Initializable {
     @FXML
     private void editEmployee(ActionEvent event) {
         EmployeeDTO selectedEmployee = employeesTable.getSelectionModel().getSelectedItem();
+        System.out.println(selectedEmployee.getAddress().getId() +" "+ selectedEmployee.getAddressString());
         try {
             Stage editEmployeeForm = new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader();
@@ -121,8 +123,13 @@ public class EmployeeFormController implements Initializable {
     @FXML
     private void deleteEmployee(ActionEvent event) {
         EmployeeDTO selectedEmployee = employeesTable.getSelectionModel().getSelectedItem();
-        EmployeeDAO.deleteEmployee(selectedEmployee);
-        fillTable();
+        System.out.println(selectedEmployee+" "+selectedEmployee.getPersonalIdNumber()+" -"+selectedEmployee.getAddress().getId());
+        try {
+            EmployeeDAO.deleteEmployee(selectedEmployee);
+        } catch (Exception e) {
+        }
+        
+       fillTable();
     }
 
     @FXML

@@ -15,14 +15,14 @@ public class PersonDTO {
     private String lastName;
     private String personalIdNumber;
     private String dateOfBirth;
-    private Address address = null;
+    private AddressDTO address = null;
     private String phoneNumber;
     private String email;
 
     public PersonDTO() {
     }
 
-    public PersonDTO(String firstName, String lastName, String personalId, String dateOfBirth, String phoneNumber, String email, Address address) {
+    public PersonDTO(String firstName, String lastName, String personalId, String dateOfBirth, String phoneNumber, String email, AddressDTO address) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.personalIdNumber = personalId;
@@ -73,15 +73,17 @@ public class PersonDTO {
         
     }
 
-    public Address getAddress() {
-        return address;
+    public AddressDTO getAddress() {
+        return this.address;
     }
     
-    
-
-    public void setAddress(String address) {
+    public void setAddressString(String address) {
         String parts[] = address.split(", ");
-        this.address = new Address(parts[0], parts[1], parts[2], parts[3]);
+        this.address = new AddressDTO(parts[0], parts[1], parts[2], parts[3]);
+    }
+
+    public void setAddress(AddressDTO address) {
+        this.address = address;
     }
 
     public String getPhoneNumber() {

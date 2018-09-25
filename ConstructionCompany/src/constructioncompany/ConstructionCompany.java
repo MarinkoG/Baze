@@ -33,6 +33,8 @@ public class ConstructionCompany extends Application {
     public static Stage addNewUserForm;
     public static Stage stagesForm;
     public static boolean editUser = false;
+    public static Stage worktimeForm;
+    public static Stage addWorktimeForm;
     
     @Override
     public void start(Stage primaryStage) {

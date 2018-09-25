@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="218.0" prefWidth="485.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddWorktimeFormController">
+   <children>
+      <Label layoutX="32.0" layoutY="25.0" text="Date" />
+      <Label layoutX="32.0" layoutY="72.0" text="Work hours" />
+      <DatePicker fx:id="datePicker" layoutX="139.0" layoutY="21.0" prefHeight="25.0" prefWidth="210.0" />
+      <TextField fx:id="workHoursText" layoutX="139.0" layoutY="68.0" prefHeight="25.0" prefWidth="210.0" />
+      <Button fx:id="saveButton" layoutX="207.0" layoutY="148.0" mnemonicParsing="false" onAction="#saveWorktime" text="Save" />
+      <Label fx:id="warningLabel" layoutX="139.0" layoutY="109.0" prefHeight="17.0" prefWidth="210.0" />
+   </children>
+</AnchorPane>

@@ -19,7 +19,7 @@ CREATE TABLE BUILDING
 (
 	Building_id           INTEGER AUTO_INCREMENT,
 	Name                  VARCHAR(20) NULL,
-	Description           VARCHAR(20) NULL,
+	Description           VARCHAR(100) NULL,
 	Address_id            INTEGER NULL,
 	 PRIMARY KEY (Building_id)
 )
@@ -83,6 +83,26 @@ CREATE TABLE HEAVY_EQUIPEMENT
 
 
 
+CREATE TABLE IS_PROJECT_MENAGER
+(
+	Project_id            INTEGER NOT NULL,
+	Personal_id_Number    VARCHAR(20) NOT NULL,
+	Start_date            DATE NULL,
+	 PRIMARY KEY (Project_id,Personal_id_Number)
+)
+;
+
+
+
+CREATE TABLE LOGIN_LOG
+(
+	Personal_id_Number    VARCHAR(20) NULL,
+	Login_Date            DATE NULL
+)
+;
+
+
+
 CREATE TABLE MATERIAL
 (
 	Material_id           INTEGER AUTO_INCREMENT,
@@ -138,7 +158,8 @@ CREATE TABLE PERSON
 	Date_of_birth         DATE NULL,
 	Address               INTEGER NULL,
 	Phone_number          VARCHAR(20) NULL,
-	E_mail                VARCHAR(50) NULL,
+	E_mail                VARCHAR(100) NULL,
+	Login_Success_Count   INTEGER NULL,
 	 PRIMARY KEY (Personal_id_Number)
 )
 ;
@@ -159,13 +180,9 @@ CREATE TABLE PROJECT
 (
 	Project_id            INTEGER AUTO_INCREMENT,
 	Name                  VARCHAR(20) NULL,
-	Description           VARCHAR(100) NULL,
-	Client                VARCHAR(20) NULL,
 	Start_date            DATE NULL,
 	Completion_date       DATE NULL,
 	Price                 INTEGER NULL,
-	Project_manager       VARCHAR(20) NULL,
-	Address_id            INTEGER NULL,
 	 PRIMARY KEY (Project_id)
 )
 ;
@@ -270,10 +287,8 @@ CREATE TABLE VEHICLES_USED_IN_STAGE
 
 CREATE TABLE WAREHOUSE
 (
-	Manager               INTEGER NULL,
 	Phone_number          VARCHAR(20) NULL,
 	Building_id           INTEGER NOT NULL,
-	Personal_id_Number    VARCHAR(20) NULL,
 	 PRIMARY KEY (Building_id)
 )
 ;
@@ -305,11 +320,10 @@ CREATE TABLE WORKS_ON
 
 CREATE TABLE WORKTIME_RECORD
 (
-	Work_hours            INTEGER NULL,
-	Overtime              INTEGER NULL,
+	Work_hours            FLOAT NULL,
 	Personal_id_Number    VARCHAR(20) NOT NULL,
-	Date                  DATE NULL,
-	 PRIMARY KEY (Personal_id_Number)
+	Date                  DATE NOT NULL,
+	 PRIMARY KEY (Personal_id_Number,Date)
 )
 ;
 
@@ -352,6 +366,23 @@ ALTER TABLE HEAVY_EQUIPEMENT
 
 
 
+ALTER TABLE IS_PROJECT_MENAGER
+	ADD FOREIGN KEY P_IPM (Project_id) REFERENCES PROJECT(Project_id)
+;
+
+
+ALTER TABLE IS_PROJECT_MENAGER
+	ADD FOREIGN KEY E_IPM (Personal_id_Number) REFERENCES EMPLOYEE(Personal_id_Number)
+;
+
+
+
+ALTER TABLE LOGIN_LOG
+	ADD FOREIGN KEY LOGS_ON (Personal_id_Number) REFERENCES PERSON(Personal_id_Number)
+;
+
+
+
 ALTER TABLE MATERIAL_IN_PURCHASE_ORDER
 	ADD FOREIGN KEY M_MIPO (Material_id) REFERENCES MATERIAL(Material_id)
 ;
@@ -387,17 +418,6 @@ ALTER TABLE MATERIAL_USED_IN_STAGE
 
 ALTER TABLE PERSON
 	ADD FOREIGN KEY LIVES (Address) REFERENCES ADDRESS(Address_id)
-;
-
-
-
-ALTER TABLE PROJECT
-	ADD FOREIGN KEY IS_PROJECT_MANAGER (Project_manager) REFERENCES EMPLOYEE(Personal_id_Number)
-;
-
-
-ALTER TABLE PROJECT
-	ADD FOREIGN KEY IS_LOCATED (Address_id) REFERENCES ADDRESS(Address_id)
 ;
 
 
@@ -458,11 +478,6 @@ ALTER TABLE VEHICLES_USED_IN_STAGE
 ALTER TABLE WAREHOUSE
 	ADD FOREIGN KEY (Building_id) REFERENCES BUILDING(Building_id)
 		ON DELETE CASCADE
-;
-
-
-ALTER TABLE WAREHOUSE
-	ADD FOREIGN KEY IS_MANAGER (Personal_id_Number) REFERENCES EMPLOYEE(Personal_id_Number)
 ;
 
 

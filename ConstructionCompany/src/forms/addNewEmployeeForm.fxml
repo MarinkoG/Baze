@@ -11,28 +11,28 @@
       <Label layoutX="42.0" layoutY="86.0" minWidth="-Infinity" text="First Name" />
       <Label layoutX="42.0" layoutY="128.0" text="Last Name" />
       <Label layoutX="44.0" layoutY="40.0" text="Personal Id" />
-      <TextField fx:id="personalIdText" layoutX="146.0" layoutY="36.0" prefHeight="25.0" prefWidth="240.0" />
       <TextField fx:id="firstNameText" layoutX="147.0" layoutY="82.0" prefHeight="25.0" prefWidth="240.0" />
       <TextField fx:id="lastNameText" layoutX="147.0" layoutY="124.0" prefHeight="25.0" prefWidth="240.0" />
+      <TextField fx:id="personalIdText" layoutX="146.0" layoutY="36.0" prefHeight="25.0" prefWidth="240.0" />
+      <Button fx:id="saveButton" layoutX="247.0" layoutY="494.0" mnemonicParsing="false" onAction="#saveEmployee" prefHeight="31.0" prefWidth="101.0" text="Save" />
       <Label layoutX="44.0" layoutY="252.0" text="Adress" />
-      <TextField fx:id="streetText" layoutX="148.0" layoutY="248.0" prefHeight="25.0" prefWidth="113.0" />
-      <TextField fx:id="numberText" layoutX="265.0" layoutY="248.0" prefHeight="25.0" prefWidth="64.0" />
-      <TextField fx:id="cityText" layoutX="333.0" layoutY="248.0" prefHeight="25.0" prefWidth="113.0" />
-      <TextField fx:id="zipCodeText" layoutX="454.0" layoutY="248.0" prefHeight="25.0" prefWidth="64.0" />
+      <TextField fx:id="streetText" layoutX="268.0" layoutY="242.0" prefHeight="25.0" prefWidth="113.0" />
       <TextField fx:id="phoneNumberText" layoutX="147.0" layoutY="292.0" prefHeight="25.0" prefWidth="240.0" />
       <Label layoutX="45.0" layoutY="296.0" text="Phone number" />
       <Label layoutX="42.0" layoutY="173.0" text="Date of Birth" />
       <DatePicker fx:id="dateOfBirthPicker" layoutX="147.0" layoutY="169.0" prefHeight="25.0" prefWidth="240.0" />
       <Label layoutX="42.0" layoutY="341.0" text="E-mail" />
       <TextField fx:id="emailText" layoutX="147.0" layoutY="337.0" prefHeight="25.0" prefWidth="240.0" />
-      <Label layoutX="282.0" layoutY="226.0" text="Num." />
-      <Label layoutX="189.0" layoutY="226.0" text="Street" />
-      <Label layoutX="349.0" layoutY="226.0" text="City" />
-      <Label layoutX="463.0" layoutY="226.0" text="Zip code" />
+      <TextField fx:id="numberText" layoutX="388.0" layoutY="241.0" prefHeight="25.0" prefWidth="64.0" />
+      <TextField fx:id="zipCodeText" layoutX="459.0" layoutY="241.0" prefHeight="25.0" prefWidth="64.0" />
+      <TextField fx:id="cityText" layoutX="148.0" layoutY="242.0" prefHeight="25.0" prefWidth="113.0" />
+      <Label layoutX="405.0" layoutY="219.0" text="Num." />
+      <Label layoutX="309.0" layoutY="220.0" text="Street" />
+      <Label layoutX="164.0" layoutY="220.0" text="City" />
+      <Label layoutX="468.0" layoutY="219.0" text="Zip code" />
       <TextField fx:id="hourlyRateText" layoutX="147.0" layoutY="386.0" prefHeight="25.0" prefWidth="240.0" />
       <Label layoutX="42.0" layoutY="390.0" text="Hourly rate" />
       <TextField fx:id="salaryText" layoutX="147.0" layoutY="430.0" prefHeight="25.0" prefWidth="240.0" />
-      <Button fx:id="saveButton" layoutX="247.0" layoutY="494.0" mnemonicParsing="false" onAction="#addNewEmployee" prefHeight="31.0" prefWidth="101.0" text="Save" />
       <Label layoutX="42.0" layoutY="434.0" text="Salary" />
       <Label fx:id="warningLabel" layoutX="148.0" layoutY="462.0" prefHeight="17.0" prefWidth="240.0" />
    </children>
